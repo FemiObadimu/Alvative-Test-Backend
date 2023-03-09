@@ -17,7 +17,7 @@ app.post("/initialize", async function (req, res, next) {
   console.log(req.body);
   const { email, name } = req.body;
   const amount = 500;
-  const callback_url = "https://edike.ng/";
+  const callback_url = "http://localhost:3000/verify";
 
   const data = {
     email,
@@ -80,16 +80,13 @@ app.get("/get-transactions", function (req, res, next) {
       "Content-type": "application/json",
     },
   };
-
   request(options, async function (error, body) {
     if (error) {
       return res
         .status(400)
         .json({ msg: `${error.message}`, status: "invalid" });
     }
-
     const response = JSON.parse(body.body);
-
     return res
       .status(200)
       .json({ ans: response.data.slice(0, 5), status: "valid" });
