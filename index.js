@@ -17,7 +17,7 @@ app.post("/initialize", async function (req, res, next) {
   console.log(req.body);
   const { email, name } = req.body;
   const amount = 500;
-  const callback_url = "http://localhost:3000/verify";
+  const callback_url = "https://alvative-test-frontend.vercel.app/verify";
 
   const data = {
     email,
